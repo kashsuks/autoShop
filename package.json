@@ -1,9 +1,17 @@
 {
+  "name": "autoShop-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "dependencies": {
     "axios": "^1.7.7",
     "express": "^4.21.1",
     "geolib": "^3.3.4",
     "nodemailer": "^6.9.15",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "dotenv": "^10.0.0"
   }
 }
