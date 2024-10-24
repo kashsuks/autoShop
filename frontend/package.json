@@ -1,0 +1,23 @@
+{
+  "name": "autoShop-frontend",
+  "version": "1.0.0",
+  "homepage": "https://kashsuks.github.io/autoShop",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "geolib": "^3.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^3.0.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
+  }
+}
