@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Layout from '../components/Layout';
+import Button from '../components/Button';
 
 const HomePage = () => {
     const [shops, setShops] = useState([]);
@@ -39,7 +42,7 @@ const HomePage = () => {
 
         const dLat = toRad(coord2.latitude - coord1.latitude);
         const dLon = toRad(coord2.longitude - coord1.longitude);
-        
+
         const a =
             Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos(toRad(coord1.latitude)) * Math.cos(toRad(coord2.latitude)) *
@@ -67,24 +70,37 @@ const HomePage = () => {
     }
 
     return (
-        <div>
-            <h1>Auto Shops</h1>
-            <input
-                type="number"
-                value={radius}
-                onChange={(e) => setRadius(e.target.value)}
-                placeholder="Enter radius in km"
-            />
-            <button onClick={displayShops}>Find Shops Nearby</button>
-            <div id="shop-list">
-                {filteredShops.map(shop => (
-                    <div key={shop.id}>
-                        <h2>{shop.name}</h2>
-                        <p>{shop.description}</p>
-                    </div>
-                ))}
+        <Layout>
+            <div className="text-center p-4">
+                <h1 className="text-3xl font-bold mb-4">Find Auto Shops Near You</h1>
+                <input
+                    type="number"
+                    value={radius}
+                    onChange={(e) => setRadius(e.target.value)}
+                    placeholder="Enter radius in km"
+                    className="border border-gray-300 rounded p-2 mb-4"
+                />
+                <Button onClick={displayShops}>Find Shops Nearby</Button>
+                <div id="shop-list" className="mt-4">
+                    {filteredShops.length > 0 ? (
+                        filteredShops.map(shop => (
+                            <motion.div 
+                                key={shop.id}
+                                className="border p-4 rounded-lg shadow-md mb-4"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <h2 className="text-xl font-semibold">{shop.name}</h2>
+                                <p>{shop.description}</p>
+                            </motion.div>
+                        ))
+                    ) : (
+                        <p>No shops found within this radius.</p>
+                    )}
+                </div>
             </div>
-        </div>
+        </Layout>
     );
 };
 
